@@ -1,10 +1,20 @@
 package com.example.demoandroidbase
 
-class MemberDetail {
-    var name: String = ""
-    var title: String = "Developer"
-    var favorite: String = "Football, travel ..."
+class MemberDetail(private var img_profile: Int?, private var name: String, private var title: String) {
+    private var favorite: String = "Football, travel ..."
 
+    constructor(img_profile: Int?, name: String, title: String, favorite: String)
+            : this(img_profile, name, title) {
+        this.favorite = favorite
+    }
+
+    var mImgProfile: Int?
+        get() {
+            return img_profile
+        }
+        set(value) {
+            img_profile = value
+        }
     var mName: String
         get() {
             return name
