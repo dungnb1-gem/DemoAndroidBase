@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DemoAndroidBase</string>
+    <string name="go_to_list_member">Go To List Member</string>
 </resources>
