@@ -2,6 +2,7 @@ package com.example.demoandroidbase
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MemberListActivity : AppCompatActivity(), OnItemClickListener {
@@ -19,10 +20,13 @@ class MemberListActivity : AppCompatActivity(), OnItemClickListener {
     private fun initView() {
         mRcvListMember = findViewById(R.id.rcvListMember)
         listMemberAdapter = MemberListAdapter(this, this)
-        listMember.add(MemberDetail(R.drawable.profile_of_gabriel,"Nguyễn Bá Dũng","Android Developer"))
-        listMember.add(MemberDetail(R.drawable.profile_of_gabriel,"Nguyễn Bá Dũng","Android Developer"))
-        listMember.add(MemberDetail(R.drawable.profile_of_gabriel,"Nguyễn Bá Dũng","Android Developer"))
-        listMember.add(MemberDetail(R.drawable.profile_of_gabriel,"Nguyễn Bá Dũng","Android Developer"))
+        listMember.add(MemberDetail(R.drawable.profile_of_gabriel, "Nguyễn Bá Dũng", "Android Developer"))
+        listMember.add(MemberDetail(R.drawable.profile_of_gabriel, "Nguyễn Bá Dũng", "Android Developer"))
+        listMember.add(MemberDetail(R.drawable.profile_of_gabriel, "Nguyễn Bá Dũng", "Android Developer"))
+        listMember.add(MemberDetail(R.drawable.profile_of_gabriel, "Nguyễn Bá Dũng", "Android Developer"))
+        mRcvListMember.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+        mRcvListMember.adapter = listMemberAdapter
+        listMemberAdapter.refreshData(listMember)
     }
 
     override fun onItemClick() {

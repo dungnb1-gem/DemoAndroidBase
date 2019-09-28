@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_member.view.*
 class MemberListAdapter(context: Context, onItemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<MemberListHolder>() {
     var mContext: Context = context
-    lateinit var mOnItemClickListener: OnItemClickListener
+    var mOnItemClickListener = onItemClickListener
     var mListMember = arrayListOf<MemberDetail>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberListHolder {
