@@ -25,7 +25,7 @@ class MemberListAdapter(context: Context, onItemClickListener: OnItemClickListen
         holder.itemView.tv_title.setText(member_detail.mTitle)
 
         holder.itemView.setOnClickListener {
-            mOnItemClickListener.onItemClick()
+            mOnItemClickListener.onItemClick(mListMember.get(holder.adapterPosition))
         }
     }
 
@@ -44,5 +44,5 @@ class MemberListAdapter(context: Context, onItemClickListener: OnItemClickListen
 class MemberListHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 interface OnItemClickListener {
-    fun onItemClick()
+    fun onItemClick(memberDetail: MemberDetail)
 }

@@ -15,6 +15,14 @@ class MainActivity : AppCompatActivity() {
         setEvent()
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun setEvent() {
         mBtnGotToListMember.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
@@ -26,5 +34,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         mBtnGotToListMember = findViewById(R.id.btnGoToList)
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
