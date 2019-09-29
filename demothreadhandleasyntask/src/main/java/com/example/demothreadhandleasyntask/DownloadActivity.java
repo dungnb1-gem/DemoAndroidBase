@@ -16,24 +16,24 @@ import androidx.annotation.Nullable;
 import static android.os.Build.VERSION.SDK_INT;
 
 public class DownloadActivity extends Activity implements View.OnClickListener {
-    private static final int REQUES_PERMISSION = 1;
-    private EditText edtLink;
-    private Button btnDownload;
-    private ProgressBar pbDownload;
+    private static final int REQUEST_PERMISSION = 1;
+    private EditText mEdtLink;
+    private Button mBtnDownload;
+    private ProgressBar mPbDownload;
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            if (message.what == MyAsyntask.WHAT_PROGRESS_UPDATE) {
+            if (message.what == MyAsyncTask.WHAT_PROGRESS_UPDATE) {
                 int percent = message.arg1;
-                pbDownload.setProgress(percent);
-            } else if (message.what == MyAsyntask.WHAT_POST_EXCUTE) {
+                mPbDownload.setProgress(percent);
+            } else if (message.what == MyAsyncTask.WHAT_POST_EXCUTE) {
                 Toast.makeText(DownloadActivity.this, "Download Complete", Toast.LENGTH_SHORT).show();
             }
             return false;
         }
     });
-    private MyAsyntask myAsyntask;
-    private String listPermission[] = new String[]{
+    private MyAsyncTask mMyAsyncTask;
+    private String mListPermission[] = new String[]{
             android.Manifest.permission.READ_EXTERNAL_STORAGE,
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -45,7 +45,7 @@ public class DownloadActivity extends Activity implements View.OnClickListener {
             addControls();
         } else {
             if (SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                requestPermissions(listPermission, REQUES_PERMISSION);
+                requestPermissions(mListPermission, REQUEST_PERMISSION);
             }
         }
         addEvents();
@@ -53,7 +53,7 @@ public class DownloadActivity extends Activity implements View.OnClickListener {
 
     private boolean checkPermission() {
         if (SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            for (String p : listPermission) {
+            for (String p : mListPermission) {
                 int state = checkSelfPermission(p);
                 if (state != PackageManager.PERMISSION_GRANTED)
                     return false;
@@ -73,26 +73,26 @@ public class DownloadActivity extends Activity implements View.OnClickListener {
     }
 
     private void addEvents() {
-        btnDownload.setOnClickListener(this);
+        mBtnDownload.setOnClickListener(this);
     }
 
     private void addControls() {
-        edtLink = findViewById(R.id.edtLink);
-        btnDownload = findViewById(R.id.btnDownload);
-        pbDownload = findViewById(R.id.pbDownload);
-        edtLink.setText("http://vnno-vn-6-tf-mp3-s1-zmp3.zadn.vn/0fa1213a097de023b96c/2819329265115630931?authen=exp=1569956684~acl=/0fa1213a097de023b96c/*~hmac=51998caa378bd0bf2a5ada7255a75719");
-        //edtLink.setText("http://img.f50.bdpcdn.net/Assets/Media/2019/09/27/67/messi.jpg");
+        mEdtLink = findViewById(R.id.edtLink);
+        mBtnDownload = findViewById(R.id.btnDownload);
+        mPbDownload = findViewById(R.id.pbDownload);
+        mEdtLink.setText("http://vnno-vn-6-tf-mp3-s1-zmp3.zadn.vn/0fa1213a097de023b96c/2819329265115630931?authen=exp=1569956684~acl=/0fa1213a097de023b96c/*~hmac=51998caa378bd0bf2a5ada7255a75719");
+        //mEdtLink.setText("http://img.f50.bdpcdn.net/Assets/Media/2019/09/27/67/messi.jpg");
     }
 
     @Override
     public void onClick(View view) {
-        String link = edtLink.getText().toString();
+        String link = mEdtLink.getText().toString();
         if (link.isEmpty()) {
             Toast.makeText(this, "Url invalid", Toast.LENGTH_SHORT).show();
             return;
         }
-        myAsyntask = new MyAsyntask(handler);
-        myAsyntask.execute(link);
+        mMyAsyncTask = new MyAsyncTask(handler);
+        mMyAsyncTask.execute(link);
     }
 
 }

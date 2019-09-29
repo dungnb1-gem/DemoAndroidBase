@@ -9,13 +9,13 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class MyAsyntask extends AsyncTask<String, Integer, String> {
+public class MyAsyncTask extends AsyncTask<String, Integer, String> {
 
     static final int WHAT_PROGRESS_UPDATE = 1;
     static final int WHAT_POST_EXCUTE = 2;
     Handler handler;
 
-    MyAsyntask(Handler handler) {
+    MyAsyncTask(Handler handler) {
         this.handler = handler;
     }
 
