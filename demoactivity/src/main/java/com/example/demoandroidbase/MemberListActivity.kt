@@ -1,40 +1,40 @@
 package com.example.demoandroidbase
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-import android.text.method.PasswordTransformationMethod
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import kotlinx.android.synthetic.main.dialog_detail.*
-
 
 class MemberListActivity : AppCompatActivity(), OnItemClickListener {
-
+    companion object {
+        val MEMBER_DETAIL = "MEMBER_DETAIL"
+    }
 
     lateinit var mRcvListMember: RecyclerView
     lateinit var listMemberAdapter: MemberListAdapter
     var listMember = arrayListOf<MemberDetail>()
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.e("Gabriel", "MemberListActivity: onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_member)
         initView()
     }
 
     override fun onStart() {
+        Log.e("Gabriel", "MemberListActivity: onStart")
         super.onStart()
     }
 
     override fun onRestart() {
+        Log.e("Gabriel", "MemberListActivity: onRestart")
         super.onRestart()
     }
 
     override fun onResume() {
+        Log.e("Gabriel", "MemberListActivity: onResume")
         super.onResume()
     }
 
@@ -73,37 +73,23 @@ class MemberListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     override fun onItemClick(memberDetail: MemberDetail) {
-        val inflater = layoutInflater
-        val alertLayout = inflater.inflate(R.layout.dialog_detail, null)
-        val imgProfile = alertLayout.findViewById(R.id.img_profile) as ImageView
-        val tvName = alertLayout.findViewById(R.id.tv_name) as TextView
-        val tvTitle = alertLayout.findViewById(R.id.tv_title) as TextView
-        val tvFavorite = alertLayout.findViewById(R.id.tv_favorite) as TextView
-
-        memberDetail.mImgProfile?.let { imgProfile.setImageResource(it) }
-        tvName.setText(memberDetail.mName)
-        tvTitle.setText(memberDetail.mTitle)
-        tvFavorite.setText(memberDetail.mFavorite)
-
-        val alert = AlertDialog.Builder(this)
-        alert.setTitle("Detail")
-        alert.setView(alertLayout)
-        alert.setCancelable(false)
-
-        val dialog = alert.create()
-        dialog.setCanceledOnTouchOutside(true)
-        dialog.show()
+        var intent = Intent(this@MemberListActivity, DialogDetailActivity::class.java)
+        intent.putExtra(MEMBER_DETAIL, memberDetail)
+        startActivity(intent)
     }
 
     override fun onPause() {
+        Log.e("Gabriel", "MemberListActivity: onPause")
         super.onPause()
     }
 
     override fun onStop() {
+        Log.e("Gabriel", "MemberListActivity: onStop")
         super.onStop()
     }
 
     override fun onDestroy() {
+        Log.e("Gabriel", "MemberListActivity: onDestroy")
         super.onDestroy()
     }
 }

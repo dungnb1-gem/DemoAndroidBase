@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_bg_button">#CACACA</color>
+    <color name="bg_calculation_inactive">#CACACA</color>
+    <color name="bg_calculation_active">#008577</color>
 </resources>

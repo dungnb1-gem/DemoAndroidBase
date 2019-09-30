@@ -1,6 +1,8 @@
 package com.example.demoandroidbase
 
-class MemberDetail(private var img_profile: Int?, private var name: String, private var title: String) {
+import java.io.Serializable
+
+class MemberDetail(private var img_profile: Int?, private var name: String, private var title: String):Serializable {
     private var favorite: String = "Football, travel ..."
 
     constructor(img_profile: Int?, name: String, title: String, favorite: String)
