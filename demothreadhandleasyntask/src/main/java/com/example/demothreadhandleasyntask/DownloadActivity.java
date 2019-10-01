@@ -80,7 +80,7 @@ public class DownloadActivity extends Activity implements View.OnClickListener {
         mEdtLink = findViewById(R.id.edtLink);
         mBtnDownload = findViewById(R.id.btnDownload);
         mPbDownload = findViewById(R.id.pbDownload);
-        mEdtLink.setText("//mp3-s1-zmp3.zadn.vn/729125b300f4e9aab0e5/3341552255942811238?authen=exp=1570010226~acl=/729125b300f4e9aab0e5/*~hmac=9d22585eff0f3dacbfed27c0ef48c350");
+        mEdtLink.setText("http://vnno-vn-5-tf-mp3-s1-zmp3.zadn.vn/b800471a6d5d8403dd4c/1145597756150434004?authen=exp=1570067828~acl=/b800471a6d5d8403dd4c/*~hmac=89f88e89778fa3e76a4aa9ddc131370d");
     }
 
     @Override
